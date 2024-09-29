@@ -14,3 +14,5 @@ QuantityMagnitude /@ isomass /@ isotopes
 ```
 
 The neutron mass was generated similarly.
+This does neglect the electronic binding energy that
+would have been included in AtomicMass.
