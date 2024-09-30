@@ -69,8 +69,8 @@ else:
         use_jax = False
         warnings.warn("Failed to load JAX")
         print(
-            "{PROJECT} using NumPy backend, version={}, dtype={}".format(
-                np.__version__, x.dtype
+            "{} using NumPy backend, version={}, dtype={}".format(
+                PROJECT, np.__version__, x.dtype
             )
         )
 
