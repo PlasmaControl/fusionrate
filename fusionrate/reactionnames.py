@@ -403,27 +403,19 @@ def _extra_name_resolver(reaction_raw_name: str):
     >>> name_resolver("D+3He")
     '³He(d,p)T'
     """
-    canonical_name = None
-    if canonical_name is None:
+    resolvers = [
+            bosch_name_resolver,
+            proton_boron_name_resolver,
+            proton_lithium_name_resolver
+            ]
+
+    for resolver in resolvers:
         try:
-            canonical_name = bosch_name_resolver(reaction_raw_name)
+            return resolver(reaction_raw_name)
         except ValueError:
-            pass
+            continue
 
-    if canonical_name is None:
-        try:
-            canonical_name = proton_boron_name_resolver(reaction_raw_name)
-        except ValueError:
-            pass
-
-    if canonical_name is None:
-        try:
-            canonical_name = proton_lithium_name_resolver(reaction_raw_name)
-        except ValueError:
-            pass
-
-    return canonical_name
-
+    return None
 
 def name_resolver(s: str):
     r"""Recognize a canonical fusion reaction
