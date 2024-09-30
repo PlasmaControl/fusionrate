@@ -52,7 +52,7 @@ else:
             import jax
             import jax.numpy as jnp
             import jaxlib
-            from jax.config import config as jax_config
+            from jax import config as jax_config
 
             jax_config.update("jax_enable_x64", True)
             x = jnp.linspace(0, 1)
