@@ -1,14 +1,15 @@
 import json
 from importlib import resources
+import os
 
 from fusionrate.load_data import DEFAULT_DATA_DIR
 
 __all__ = ["ion_mass"]
 
-with resources.path(DEFAULT_DATA_DIR, "ions.json") as f:
-    with open(f, "rb") as s:
-        ion_data = json.load(s)
+file_path = resources.files(DEFAULT_DATA_DIR) / "ions.json"
 
+with open(file_path, 'r') as f:
+    ion_data = json.load(f)
 
 def ion_mass(s):
     r"""
